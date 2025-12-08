@@ -1,8 +1,8 @@
 #include "ft_printf.h"
 
-static char to_hexa(unsigned n)
+static char to_hexa(unsigned long n)
 {
-    if(n >= 0 && n <= 9)
+    if(n <= 9)  //it will not be 0 because it's unsigned
     return (n + '0');
     else
     if(n == 10)
@@ -19,7 +19,7 @@ static char to_hexa(unsigned n)
     return ('f');
 }
 
-int ft_printf_hexa_lower(unsigned num)
+static int ft_printf_hexa_lower(unsigned long num)
 {
     int count;
 
@@ -29,6 +29,25 @@ int ft_printf_hexa_lower(unsigned num)
     char c = to_hexa(num % 16);
     write(1, &c, 1);
     count++;
+
+    return (count);
+}
+
+int ft_printf_pointer(void *v)
+{
+    int count;
+    unsigned long num;
+
+    if(v == NULL)
+    {
+        write(1, "(nil)", 5);
+        return (5);
+    }
+    count = 0;
+    num = (unsigned long)v;
+    write(1, "0x", 2);
+    count += 2;
+    count += ft_printf_hexa_lower(num);
 
     return (count);
 }

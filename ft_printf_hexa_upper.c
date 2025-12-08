@@ -25,7 +25,7 @@ int ft_printf_hexa_upper(unsigned num)
 
     count = 0;
     if(num >= 16)
-    count += ft_printf_hexa(num/16);
+    count += ft_printf_hexa_upper(num/16);
     char c = to_hexa(num % 16);
     write(1, &c, 1);
     count++;
