@@ -1,17 +1,21 @@
 #include "ft_printf.h"
 
-int ft_printf_int(int num)
+int ft_printf_int(int n)
 {
-    char *str;
-    size_t i;
+    int     len;
+    char    c;
 
-    i = 0;
-    str = ft_itoa(num);
-    while(str[i])
+    len = 0;
+    if (n == -2147483648)
+        return (write(1, "-2147483648", 11));
+    if (n < 0)
     {
-        write(1, &str[i], 1);
-        i++;
+        len += write(1, "-", 1);
+        n = -n;
     }
-    free(str);
-    return i;
+    if (n > 9)
+        len += ft_printf_int(n / 10);
+    c = (n % 10) + '0';
+    len += write(1, &c, 1);
+    return (len);
 }

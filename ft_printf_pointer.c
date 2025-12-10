@@ -19,13 +19,13 @@ static char to_hexa(unsigned long n)
     return ('f');
 }
 
-static int ft_printf_hexa_lower(unsigned long num)
+static int ft_printf_hexa_lower_new(unsigned long num)
 {
     int count;
 
     count = 0;
     if(num >= 16)
-    count += ft_printf_hexa_lower(num/16);
+    count += ft_printf_hexa_lower_new(num/16);
     char c = to_hexa(num % 16);
     write(1, &c, 1);
     count++;
@@ -47,7 +47,7 @@ int ft_printf_pointer(void *v)
     num = (unsigned long)v;
     write(1, "0x", 2);
     count += 2;
-    count += ft_printf_hexa_lower(num);
+    count += ft_printf_hexa_lower_new(num);
 
     return (count);
 }
