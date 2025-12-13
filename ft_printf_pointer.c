@@ -38,12 +38,12 @@ int ft_printf_pointer(void *v)
     int count;
     unsigned long num;
 
+    count = 0;
     if(v == NULL)
     {
-        write(1, "(nil)", 5);
-        return (5);
+        counts += write(1, "0x0", 3);
+        return (count);
     }
-    count = 0;
     num = (unsigned long)v;
     write(1, "0x", 2);
     count += 2;
