@@ -41,7 +41,7 @@ int ft_printf_pointer(void *v)
     count = 0;
     if(v == NULL)
     {
-        counts += write(1, "0x0", 3);
+        count += write(1, "0x0", 3);
         return (count);
     }
     num = (unsigned long)v;
