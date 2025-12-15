@@ -1,4 +1,5 @@
 NAME    = libftprintf.a
+HEADER  = ft_printf.h
 
 SRCS    = ft_printf.c \
           ft_printf_char.c \
@@ -21,7 +22,7 @@ all: $(NAME)
 $(NAME): $(OBJS)
 	$(AR) $(NAME) $(OBJS)
 
-%.o: %.c
+%.o: %.c $(HEADER)
 	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
