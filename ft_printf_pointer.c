@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf_pointer.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alikhaled1855gmail.com <alikhaled1855gm    +#+  +:+       +#+        */
+/*   By: alsaleh <alsaleh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/12/14 00:01:49 by alikhaled18       #+#    #+#             */
-/*   Updated: 2025/12/15 17:22:23 by alikhaled18      ###   ########.fr       */
+/*   Created: 2025/12/23 12:29:40 by alsaleh           #+#    #+#             */
+/*   Updated: 2025/12/23 12:30:04 by alsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int	ft_printf_pointer(void *v)
 	unsigned long	num;
 
 	if (!v)
-		return (write(1, "0x0", 3));
+		return (write(1, "(nil)", 5));
 	num = (unsigned long)v;
 	count = write(1, "0x", 2);
 	count += ft_printf_hexa_ptr(num);
